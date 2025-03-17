@@ -1,0 +1,80 @@
+I.	Introduction
+------------------
+1.	But du jeu
+
+Le jeu Marienbad est un jeu de stratégie impliquant des tas d'allumettes que nous nous sommes permis de créer avec une liste. 
+Le but du jeu est de retirer des allumettes de manière stratégique pour forcer l'adversaire à retirer la dernière allumette : le seul but étant de le faire perdre.
+Ce jeu implique un échange de tours entre deux joueurs où chacun d’entre eux choisit un tas d'allumettes et retire un certain nombre d'allumettes.
+------------------
+
+2.	Règles du jeu
+Le jeu se déroule suivant des règles simples mais nécessitant une certaine réflexion pour jouer stratégiquement :
+    -Tas d'allumettes : Le jeu commence avec plusieurs tas d'allumettes, chacun ayant un nombre d'allumettes prédéfini. (le premier aura 1, le deuxième 2, …)
+    -Retrait des allumettes : À chaque tour, les joueur choisissent un tas et retire un certain nombre d'allumettes à tour de rôle.
+    -Limite de retrait : Un joueur ne peut pas retirer plus d'allumettes que celles disponibles dans le tas choisi.
+    -Fin du jeu : Le jeu prend fin lorsque tous les tas sont vides : le joueur qui retire la dernière allumette est déclaré perdant.
+------------------
+II.	Structure du projet
+1.	Initialisation des variables
+allumettes = [1,2,3,4,5,6] #Tas et allumettes du jeu
+
+Cette ligne initialise les tas où chaque nombre dans la liste représente le nombre d'allumettes. Le jeu commence avec 6 tas contenant respectivement 1, 2, 3, 4, 5 et 6 allumettes, ce qui fait 21 au total.
+------------------
+2.	Message de bienvenue
+#Message de bienvenue au jeu
+print("========================================================================")
+print("Bienvenue dans le jeu Marienbad.")
+print("Le but est de prendre un certain nombre d'allumettes d'un tas.")
+print("Cependant, si vous voulez prendre un nombre < que ce qui est disponible dans le tas, cela vous fera rejouer pour donner une valeur valide.")
+print("========================================================================\n")
+
+Ce bloc affiche un message de bienvenue expliquant les règles de base du jeu avant que les joueurs ne commencent à jouer.
+------------------
+3.	Demande des noms des joueurs
+#Insertion du nom des joueurs
+nom1 = input("Entrez le nom du joueur 1 : ")
+nom2 = input("Entrez le nom du joueur 2 : ")
+
+print("\nJoueurs enregistrés :", nom1, "et", nom2,"\n")
+Les noms des joueurs sont demandés au début du jeu et sont ensuite enregistrés dans la liste joueurs puis afficher. Cela permet de personnaliser les messages pendant le jeu.
+------------------
+4.	Initialisation des variables de jeu
+ joueurs = [nom1,nom2] #Liste des noms de joueurs
+tour = 0 #Echange entre les deux joueurs pour faire le tour de role, initialisé à 0
+
+La liste joueurs contient les noms des deux joueurs, et la variable tour permet de déterminer de quel joueur il s'agit pendant chaque tour (0 pour le joueur 1 et 1 pour le joueur 2).
+------------------
+5.	Boucle principale du jeu
+
+#Déroulement de la partie
+while sum(allumettes) >0: #calcule la somme des éléments de la liste des allumettes
+    print(allumettes,"\n")
+    print("Joueur", joueurs[tour], "joue.\n")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    joueur_tas = int(input("Nombre du tas choisi (de 1 à 6): "))-1
+    allumette_tas = int(input("Nombre d'allumette(s) à retirer dans le tas: "))
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    
+La boucle principale s'exécute tant qu'il reste des allumettes dans les tas (c'est-à-dire que la somme des éléments des allumettes est supérieure à 0). À chaque tour, le joueur choisit un tas et le nombre d'allumettes à retirer.
+------------------
+6.	Vérification des choix des joueurs
+if 0 <= joueur_tas < len(allumettes) and 0 < allumette_tas <= allumettes[joueur_tas]: #Si le nombre du tas est => 0 (indice) et allumettes_tas[joueurs_tas] > 0
+    allumettes[joueur_tas] -= allumette_tas
+    tour =1-tour #Tour prend en compte l'indice de la liste de joueurs (joueur 1 = 0 et joueur 2 = 1)
+else:
+    print("Le tas et les allumettes choisi ne sont pas disponibles, veuillez réessayer.")
+  	
+Le code vérifie si le choix du tas et le nombre d'allumettes à retirer sont valides. Si c'est le cas, les allumettes sont retirées du tas choisi et le tour passe au joueur suivant. 
+Dans le cas contraire, un message d'erreur est affiché et le joueur doit recommencer : c’est-à-dire choisir une valeur de tas valide ainsi que le nombre d’allumettes présent dans le jeu.
+------------------
+8.	Fin du jeu
+if sum(allumettes) == 0:
+    print(allumettes) #pour afficher tous les 0 de la liste des allumettes une fois vidée
+    print("Le joueur", joueurs[tour],"a gagné vu que le joueur", joueurs[1-tour], "a retiré la dernière allumette.")
+  	
+Lorsque la somme des allumettes = 0 (ce qui signifie que tous les tas sont vides), le jeu se termine et annonce le joueur perdant et celui ayant retiré la dernière allumette (gagnant).
+------------------
+III.	Conclusion
+------------------
+Le projet du jeu de Marienbad a permis d'explorer la programmation des jeux à deux joueurs sur Python, mettant en œuvre des concepts clés tels que la gestion des entrées utilisateur, les boucles, et la stratégie algorithmique.
+En fin de compte, ce programme met en avant la simplicité et l'efficacité de Python pour concevoir des jeux à logique pure, où seule la réflexion des joueurs détermine l'issue de la partie. 
