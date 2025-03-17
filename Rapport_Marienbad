@@ -6,7 +6,6 @@ Le jeu Marienbad est un jeu de stratégie impliquant des tas d'allumettes que no
 Le but du jeu est de retirer des allumettes de manière stratégique pour forcer l'adversaire à retirer la dernière allumette : le seul but étant de le faire perdre.
 Ce jeu implique un échange de tours entre deux joueurs où chacun d’entre eux choisit un tas d'allumettes et retire un certain nombre d'allumettes.
 ------------------
-
 2.	Règles du jeu
 Le jeu se déroule suivant des règles simples mais nécessitant une certaine réflexion pour jouer stratégiquement :
     -Tas d'allumettes : Le jeu commence avec plusieurs tas d'allumettes, chacun ayant un nombre d'allumettes prédéfini. (le premier aura 1, le deuxième 2, …)
@@ -45,7 +44,6 @@ tour = 0 #Echange entre les deux joueurs pour faire le tour de role, initialisé
 La liste joueurs contient les noms des deux joueurs, et la variable tour permet de déterminer de quel joueur il s'agit pendant chaque tour (0 pour le joueur 1 et 1 pour le joueur 2).
 ------------------
 5.	Boucle principale du jeu
-
 #Déroulement de la partie
 while sum(allumettes) >0: #calcule la somme des éléments de la liste des allumettes
     print(allumettes,"\n")
